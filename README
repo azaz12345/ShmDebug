@@ -1,0 +1,7 @@
+# ShmDebug
+This is a debug tool that integrate a simple memory management + queue + log on share memory. This tool can avoid to reduce performance on debug stage.
+
+# TODO list
+1. add list feature
+2. use list feature to re-implement queue feature
+3. data_rm() need to re-implement because the point of data does NOT suggest free in here.
