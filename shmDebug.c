@@ -8,6 +8,8 @@
 #include "shmDebug.h"
 #include "shmMalloc.h"
 
+shm_debug_context_t* shm = NULL;
+
 int initDebugShm()
 {
     int shmid;
@@ -300,6 +302,7 @@ void shmDbgRmoveTrace(void *address)
 			if(tmpTraceData.address!=address) continue;
 	
 			data_rm(&shm->traceList, shm->traceList.curr->data);
+			dbgMem_free(shm->traceList.curr->data);
 			//pdcpShmlog("[free][address = %x] [traceData' address = %x]\n", address, shm->traceList.curr->data);
 			break;
 				

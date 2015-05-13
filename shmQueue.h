@@ -1,21 +1,13 @@
 #ifndef __SHM_QUEUE_H_
 #define __SHM_QUEUE_H_
+#include "shmList.h"
 
-struct QueueElement{
-	struct QueueElement *next, *pre;
-	void *data;
-};
-
-typedef struct Queue_s{
-	struct QueueElement *head;
-	struct QueueElement *last;
-	struct QueueElement *curr;
-	long int length;
-} shmQueue;
+typedef listNode QueueElement;
+typedef list_t shmQueue;
 
 int queue_create(shmQueue **queue);
-int queue_put(shmQueue *queue, struct QueueElement *element);
-int queue_get(shmQueue *queue, struct QueueElement **element);
+int queue_put(shmQueue *queue, QueueElement *element);
+int queue_get(shmQueue *queue, QueueElement **element);
 
 int data_put(shmQueue *queue, void *data);
 int data_get(shmQueue *queue, void *data, unsigned int size);
